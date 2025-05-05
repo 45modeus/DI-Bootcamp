@@ -27,3 +27,10 @@ img {
     width: 600px;
     height: 400px;
 }
+
+#characteristics {
+    text-align: center;
+    border: 1px solid pink;
+    color: pink;
+    
+}
