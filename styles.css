@@ -1,0 +1,8 @@
+#bold {
+    font-weight: bold;
+}
+
+#highlight {
+    display: inline-block;
+    background-color: yellow;
+}
