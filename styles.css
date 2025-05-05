@@ -6,3 +6,11 @@
     display: inline-block;
     background-color: yellow;
 }
+
+h3 {
+    text-decoration: underline;
+}
+
+#catsenses {
+    padding-left: 50px;
+}
