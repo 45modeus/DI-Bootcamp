@@ -18,3 +18,12 @@ h3 {
 ol {
     list-style-type: upper-roman;
 }
+
+#media {
+    text-align: center;
+}
+
+img {
+    width: 600px;
+    height: 400px;
+}
