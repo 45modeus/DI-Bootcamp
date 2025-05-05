@@ -14,3 +14,7 @@ h3 {
 #catsenses {
     padding-left: 50px;
 }
+
+ol {
+    list-style-type: upper-roman;
+}
