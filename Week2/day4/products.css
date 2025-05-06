@@ -42,3 +42,8 @@ ul {
    text-align: center;
    word-spacing: 50px;
   }
+
+  #box > div {
+    width: 500px;
+    display: inline-block;
+  }
