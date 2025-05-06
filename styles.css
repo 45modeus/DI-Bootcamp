@@ -51,6 +51,6 @@ table {
     margin: auto;
 }
 
-.media > img {
+#lion {
     border: 5px solid red;
 }
