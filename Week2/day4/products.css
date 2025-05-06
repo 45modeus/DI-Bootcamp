@@ -44,6 +44,32 @@ ul {
   }
 
   #box > div {
-    width: 500px;
     display: inline-block;
+  }
+
+  .picture {
+    width: 450px;
+    margin: 0 10px;
+    padding: 50px 0;
+  }
+
+
+  .pic {
+    text-align: center;
+  }
+
+  .newprice {
+    color: green;
+    font-weight: bold;
+    font-size: large;
+  }
+
+  .oldprice {
+    text-decoration: line-through;
+    color: grey;
+    font-size: small;
+  }
+
+  .addtocart {
+    
   }
