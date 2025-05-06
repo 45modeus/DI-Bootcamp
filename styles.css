@@ -29,7 +29,18 @@ img {
 }
 
 #characteristics {
+    line-height: 1px;
+    width: 85%;
+    margin: auto;
     text-align: center;
-    border: 1px solid hotpink;
-    color: hotpink;
+    border: 1px solid red;
+    color: red;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
+table {
+    width: 85%;
 }
