@@ -1,0 +1,32 @@
+* {
+    margin: 0
+   }
+
+#navbar {
+    background-color: black;
+    padding: 20px;
+}
+
+ul {
+    display:block;
+    list-style-type: none;
+    padding: 0 50px;
+  }
+
+  #products {
+    color: white;
+    float: right;
+  }
+
+  #products a {
+    text-decoration: none;
+    color: white;
+  }
+
+    a:visited {
+    color: white;
+  }
+
+  a:active {
+        color: white;
+  }
