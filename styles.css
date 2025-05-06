@@ -19,7 +19,7 @@ ol {
     list-style-type: upper-roman;
 }
 
-#media {
+.media {
     text-align: center;
 }
 
@@ -30,17 +30,27 @@ img {
 
 #characteristics {
     line-height: 1px;
-    width: 85%;
+    width: 88%;
     margin: auto;
     text-align: center;
     border: 1px solid red;
     color: red;
 }
 
-table, th, td {
+th, td {
     border: 1px solid black;
 }
 
+td {
+    letter-spacing: -.3px;
+    padding: 20px 5px;
+}
+
 table {
-    width: 85%;
+    width: 88%;
+    margin: auto;
+}
+
+.media > img {
+    border: 5px solid red;
 }
