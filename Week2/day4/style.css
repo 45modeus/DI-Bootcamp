@@ -16,6 +16,7 @@ ul {
   #products {
     color: white;
     float: right;
+    text-transform: uppercase;
   }
 
   #products a {
@@ -29,4 +30,15 @@ ul {
 
   a:active {
         color: white;
+  }
+
+  .footer {
+    position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color: black;
+   color: white;
+   text-align: center;
+   word-spacing: 50px;
   }
