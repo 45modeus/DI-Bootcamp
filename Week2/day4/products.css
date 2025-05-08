@@ -72,7 +72,7 @@ ul {
   }
 
   #discount {
-    border-radius: 50%;
+    display: flex;
     position: absolute;
     word-spacing: 300px;
     font-weight: bold;
@@ -88,4 +88,13 @@ ul {
 
   .discount2 {
     background-color: red;
+  }
+
+  .pic:hover {
+    display: block;
+  }
+
+  .popup {
+    display: none;
+    background-color: white;
   }
