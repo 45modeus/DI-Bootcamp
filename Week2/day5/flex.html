@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flex box practice</title>
+    <style>
+        .row1 {
+            height: 100px;
+            display: flex;
+        }
+
+        .row1 > div {
+            background-color: brown;
+            min-width: 200px;
+            min-height: 100px;
+            margin: 1px;
+            flex: 1;
+
+        }
+
+        .row2 {
+            display: flex;
+        }
+
+        .row2 > div {
+            flex: 1;
+            background-color: aqua;
+            border: 1px dotted black;
+            height: 500px;
+        }
+
+        .item1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .item2 {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .item2 > div {
+            flex: 1;
+            background-color: blueviolet;
+            min-width: 10px;
+            min-height: 10px;
+            border: 1px solid white;
+            padding: 1px;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="row1">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <div class="row2">
+        <div class="item1">
+            <div class="minicube" style="width: 100px;height: 100px;background-color: yellow;"></div>
+        </div>
+        <div class="item2">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+</body>
+</html>
