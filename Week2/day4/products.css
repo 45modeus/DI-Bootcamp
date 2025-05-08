@@ -72,23 +72,20 @@ ul {
   }
 
   #discount {
+    border-radius: 50%;
     position: absolute;
     word-spacing: 300px;
     font-weight: bold;
     color: white;
     font-size: medium;
+    top: 90px;
+    left: 10px;
   }
 
   .discount1 {
-    height: 50px;
-    width: 50px;
     background-color: green;
-    border-radius: 50%;
   }
 
   .discount2 {
-    border-radius: 50%;
-    height: 50px;
-    width: 50px;
     background-color: red;
   }
