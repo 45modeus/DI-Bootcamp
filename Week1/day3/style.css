@@ -1,0 +1,44 @@
+body {
+    background-color: wheat;
+}
+
+h1 {
+    color: pink;
+}
+
+#blue {
+    color: blue;
+}
+
+#firstDiv {
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.pink {
+    background-color: pink;
+    color: white;
+}
+.lightblue {
+    background-color: lightblue;
+    padding: 20px;
+    margin: 50px;
+}
+
+#flagblue {
+    background-color:blue;
+}
+
+#white {
+    background-color: white;
+}
+
+#red {
+    background-color: red;
+}
+
+#dimension > div {
+    height: 100px;
+    width: 50px;
+    display: inline-block;
+}
