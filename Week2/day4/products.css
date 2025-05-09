@@ -48,9 +48,9 @@ ul {
   }
 
   .picture {
-    width: 450px;
-    margin: 0 5px;
-    padding: 50px 0;
+    width: 350px;
+    margin: 0 10px;
+    padding: 20px 0;
   }
 
 
@@ -75,12 +75,12 @@ ul {
   #discount {
     display: flex;
     position: absolute;
-    word-spacing: 300px;
+    word-spacing: 222px;
     font-weight: bold;
     color: white;
     font-size: large;
-    top: 80px;
-    left: 10px;
+    top: 60px;
+    left: 25px;
   }
 
   #discount > p {
@@ -103,4 +103,21 @@ ul {
     width: 50px;
     height: 32px;
     background-color: red;
+  }
+
+  .addtocart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  button {
+    background-color: white;
+    border: 1px solid grey;
+    width: 120px;
+    height: 40px;
+    color: grey;
+    font-weight: bold;
+    text-transform: uppercase;
   }
