@@ -78,24 +78,25 @@ ul {
     word-spacing: 300px;
     font-weight: bold;
     color: white;
-    font-size: medium;
-    top: 90px;
+    font-size: large;
+    top: 80px;
     left: 10px;
   }
 
+  .discountsolo {
+    padding-left: 50px;
+  }
+
   .discount1 {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
     background-color: green;
   }
 
   .discount2 {
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
     background-color: red;
-  }
-
-  .pic:hover {
-    display: block;
-  }
-
-  .popup {
-    display: none;
-    background-color: white;
   }
