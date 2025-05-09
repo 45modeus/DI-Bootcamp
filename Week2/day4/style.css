@@ -13,10 +13,17 @@ ul {
     padding: 0 70px;
   }
 
+  #signup {
+    display: inline;
+    float: right;
+  }
+
   #products {
     color: white;
     float: right;
     text-transform: uppercase;
+    word-spacing: 2px;
+    padding-right: 100px;
   }
 
   #products a {
