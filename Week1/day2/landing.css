@@ -32,3 +32,20 @@ h1 {
     text-align: center;
     color: white;
 }
+
+.minicontainer > h1 {
+    color: blue;
+    font-size: medium;
+    font-weight: normal;
+}
+
+.minicontainer > p {
+    color: grey;
+    font-size: small;;
+}
+
+.minicontainer {
+    text-align: center;
+    width: 100%;
+    display: inline-block;
+}
