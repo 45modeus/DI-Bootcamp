@@ -48,7 +48,7 @@ ul {
   }
 
   .picture {
-    width: 350px;
+    width: 310px;
     margin: 0 10px;
     padding: 20px 0;
   }
@@ -75,12 +75,12 @@ ul {
   #discount {
     display: flex;
     position: absolute;
-    word-spacing: 222px;
+    word-spacing: 185px;
     font-weight: bold;
     color: white;
     font-size: large;
     top: 60px;
-    left: 25px;
+    left: 22px;
   }
 
   #discount > p {
