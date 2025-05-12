@@ -1,0 +1,10 @@
+#navbar {
+    background-color: black;
+    margin: 0;
+}
+
+li {
+    list-style: none;
+    color: white;
+    display: inline;
+}
