@@ -1,10 +1,21 @@
-#navbar {
-    background-color: black;
+* {
     margin: 0;
+}
+
+#navbar {
+    background-color: grey;
+    width: 100%;
 }
 
 li {
     list-style: none;
     color: white;
     display: inline;
+}
+
+.navbar-brand img {
+    margin-top: 10px;
+    margin-left: 10px;
+    width: 30px;
+    height: 30px;
 }
