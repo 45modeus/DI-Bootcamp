@@ -9,7 +9,7 @@
 
 li {
     list-style: none;
-    color: white;
+    color: black;
     display: inline;
 }
 
@@ -18,4 +18,19 @@ li {
     margin-left: 10px;
     width: 30px;
     height: 30px;
+}
+
+#container {
+    background-image: url(wallpapersden.com_marvel-moon-knight-superhero_3840x2160.jpg);
+    background-repeat: no-repeat;
+    object-fit: contain;
+    background-size: cover;
+    background-position: center;
+}
+
+#description {
+    color: black;
+    font-size: larger;
+    margin-top: 500px;
+    text-align: center;
 }
