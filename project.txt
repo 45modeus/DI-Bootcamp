@@ -1,0 +1,7 @@
+Change the title
+why do we need this? What am I proposing(justification)
+Use cases
+project desc: CLear and concise
+add list of contributors to small events
+planning every pages and the component on the pages
+Try meta OG tag 
