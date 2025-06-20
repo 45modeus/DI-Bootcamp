@@ -1,0 +1,29 @@
+Konekté will be a dynamic web application that serves as a centralized platform for discovering, creating, and managing events across Mauritius. It connects event organizers with the general public, offering a user-friendly space to list, browse, and participate in a wide range of events — from large concerts and community gatherings to private seminars and online conferences.
+
+Users can browse and filter events by type, location, or organizer, book or cancel tickets, set reminders, and join online events.
+
+Organizers can create, update, and manage events, track bookings, accept payments or donations, and choose event visibility (public/private).
+
+We will have a list of contributors to small events.
+
+Admins can oversee the platform, manage content, cancel events, and access site-wide statistics.
+
+There is currently no unified platform in Mauritius that groups all types of events — from public to private, physical to virtual. Konekté fills this gap by offering:
+
+Centralized listings of all event types
+
+Tools for organizers to promote and monetize their events
+
+A streamlined booking and ticketing system for users
+
+Custom visibility for institutions and private gatherings
+
+Individuals discovering and attending local or virtual events
+
+NGOs and communities hosting social or cultural activities
+
+Businesses organizing internal or public-facing events
+
+Institutions managing conferences, workshops, or trainings
+
+To become Mauritius’ go-to platform for events of every kind — fostering connection, participation, and community through accessible, inclusive, and organized event experiences.
