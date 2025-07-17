@@ -1,0 +1,19 @@
+body {
+    background-color: #FFFFFF;
+}
+
+.navbar-brand {
+    width: 130px;
+    height: 130px;
+    margin: -100px 0;
+}
+
+.navbar {
+    background-color: rgba(194, 245, 243, 0.5);
+    color: #2A2D34;
+}
+
+.nav-item {
+    padding: 0 10px;
+    font-weight: 450;
+}  
