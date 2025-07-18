@@ -3,8 +3,14 @@ body {
     font-family: 'Inter';
 }
 
-footer {
-     background-color: rgba(144, 163, 163, 1);
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(144, 163, 163, 0.2);
+    color: #2A2D34;
+    text-align: center;
 }
 
 /* navbar */
