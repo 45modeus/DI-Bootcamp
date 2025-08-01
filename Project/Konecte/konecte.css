@@ -1,0 +1,56 @@
+body {
+    background-color: #FFFFFF;
+    font-family: 'Inter';
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(144, 163, 163, 0.2);
+    color: #2A2D34;
+    text-align: center;
+}
+
+/* navbar */
+
+.navbar-brand {
+    width: 130px;
+    height: 130px;
+    margin: -100px 0;
+}
+
+.navbar {
+    word-spacing: -1px;
+    background-color: rgba(144, 163, 163, 0.2);
+    color: #2A2D34;
+}
+
+.nav-item {
+    padding: 0 10px;
+    font-weight: 450;
+}  
+
+.btn {
+    background-color: #149CA6;
+    color: #FFFFFF;
+}
+
+.btn:hover {
+    background-color: rgba(19, 218, 218, 0.418);
+    color: #FFFFFF;
+}
+
+/* sign in */
+
+.signin {
+    font-size: large;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+    margin: 150px auto;
+    padding: 80px 70px;
+    text-align: center;
+
+}
