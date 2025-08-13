@@ -64,10 +64,23 @@ body {
             font-size: 24px;
             cursor: pointer;
         }
+
+        /* logo */
         
         .logo {
             font-size: 1.6rem;
             font-weight: bold;
+        }
+
+        .logo a {
+            color: white;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: opacity 0.2s;
+        }
+
+        .logo a:hover {
+            opacity: 1;
         }
         
         .nav {
