@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <div>
+        <p id="name">Peter</p>
+        <p id="age">25</p>
+        <p id="location">New York</p>
+        <p id="occupation">Software engineer</p>
+        <p id="salary">30000</p>
+    </div>
+</body>
+
+<script>
+        let name= document.getElementById("name");
+        console.log(name.textContent);
+
+        let loc= document.querySelector("#location");
+        console.log(loc.textContent);
+
+        let age= document.querySelector("#age").textContent;
+        console.log(age);
+
+        // update a dom object
+        let salary= document.getElementById("salary"); //select element
+        salary.textContent=(parseInt(age)*2000).toString(); //change salary value
+
+        //update occupation
+        document.getElementById("occupation").innerHTML="Plumber";
+        
+</script>~=
+
+</html>
