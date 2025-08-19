@@ -6,7 +6,8 @@ body {
 /* navbar */
 .website-mockup {
     background: white;
-    border-radius: 16px;
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
     overflow: hidden;
     box-shadow: 0 8px 32px rgba(26, 54, 93, 0.12);
 }
