@@ -4,14 +4,12 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
   <link rel="stylesheet" href="./src/css/konecte.css">
-  <title>Konecte</title>
+  <title>Book Event - Konekté</title>
 </head>
 
 <body>
-  <body>
   <!-- Navbar -->
   <nav class="fixed-top">
     <div class="website-mockup">
@@ -20,162 +18,244 @@
         <nav class="nav">
           <a href="events.html">Browse Events</a>
           <a href="create.html">Create Event</a>
-          <a href="bookings.html">Bookings</a>
+          <a href="#">Bookings</a>
           <a href="login.html">Login</a>
         </nav>
-        <div class="hamburger">
+        <div class="hamburger" onclick="toggleMobileMenu()">
           <span></span>
           <span></span>
           <span></span>
         </div>
+      </div>
+      <div class="mobile-nav" id="mobileNav">
+        <a href="events.html">Browse Events</a>
+        <a href="create.html">Create Event</a>
+        <a href="bookings.html">Bookings</a>
+        <a href="login.html">Login</a>
       </div>
     </div>
   </nav>
 
-  <!-- Main Content -->
   <div class="booking-container">
-    <div class="booking-header">
-      <h1 class="booking-title">Book Your <span style="color: #319795;">Ticket</span></h1>
-      <p class="booking-subtitle">Complete your booking details below</p>
-    </div>
+    <a href="events.html" class="back-link">← Back to Events</a>
 
-    <!-- Event Preview -->
-    <div class="event-preview">
-      <img id="eventImage" src="" alt="Event Image" class="event-image">
-      <div class="event-content">
-        <span id="eventType" class="event-type">Loading...</span>
-        <h3 id="eventTitle">Loading Event...</h3>
-        <div class="event-meta">
-          <span id="eventDate">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-              <line x1="16" y1="2" x2="16" y2="6"></line>
-              <line x1="8" y1="2" x2="8" y2="6"></line>
-              <line x1="3" y1="10" x2="21" y2="10"></line>
-            </svg>
-            Loading...
-          </span>
-          <span id="eventLocation">📍 Loading...</span>
-        </div>
-        <p id="eventDescription" class="event-description">Loading event description...</p>
-        
-        <div class="event-features" id="eventFeatures">
-          <!-- Features will be populated by JavaScript -->
-        </div>
-      </div>
-    </div>
-
-    <!-- Booking Form -->
-    <div class="booking-form">
-      <div class="success-message" id="successMessage">
-        ✅ Booking confirmed! Check your email for details.
-      </div>
+    <div class="booking-card">
+      <h1 class="event-title" id="eventTitle">Loading Event...</h1>
+      <div class="event-meta" id="eventMeta"></div>
 
       <form id="bookingForm">
-        <!-- Personal Information -->
+        <!-- Tickets -->
         <div class="form-section">
-          <h4>Personal Information</h4>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="firstName">First Name</label>
-              <input type="text" class="form-control" id="firstName" name="firstName" required>
-            </div>
-            <div class="form-group">
-              <label for="lastName">Last Name</label>
-              <input type="text" class="form-control" id="lastName" name="lastName" required>
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="form-group">
-              <label for="email">Email Address</label>
-              <input type="email" class="form-control" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-              <label for="phone">Phone Number</label>
-              <input type="tel" class="form-control" id="phone" name="phone">
-            </div>
-          </div>
+          <h3 class="section-title">Select Tickets</h3>
+          <div id="ticketOptions"></div>
         </div>
 
-        <!-- Ticket Selection -->
+        <!-- Personal Info -->
         <div class="form-section">
-          <h4>Ticket Selection</h4>
-          <div class="ticket-selector">
-            <div class="ticket-info">
-              <h5 id="ticketName">General Admission</h5>
-              <span class="ticket-price">$<span id="ticketPrice">25.00</span> each</span>
-            </div>
-            <div class="quantity-control">
-              <button type="button" class="qty-btn" onclick="changeQuantity(-1)">-</button>
-              <span class="qty-display" id="quantity">1</span>
-              <button type="button" class="qty-btn" onclick="changeQuantity(1)">+</button>
-            </div>
+          <h3 class="section-title">Your Details</h3>
+          <input type="text" class="form-control" id="firstName" placeholder="First Name" required>
+          <input type="text" class="form-control" id="lastName" placeholder="Last Name" required>
+          <input type="email" class="form-control" id="email" placeholder="Email Address" required>
+          <input type="tel" class="form-control" id="phone" placeholder="Phone Number (Optional)">
+        </div>
+
+        <!-- Total -->
+        <div class="total-section">
+          <div class="total-row">
+            <span>Subtotal:</span>
+            <span id="subtotal">$0.00</span>
+          </div>
+          <div class="total-row">
+            <span>Service Fee:</span>
+            <span id="serviceFee">$0.00</span>
+          </div>
+          <div class="total-row total-final">
+            <span>Total:</span>
+            <span id="totalAmount">$0.00</span>
           </div>
         </div>
 
-        <!-- Special Requests -->
-        <div class="form-section">
-          <div class="form-group">
-            <label for="specialRequests">Special Requests (Optional)</label>
-            <textarea class="form-control" id="specialRequests" name="specialRequests" rows="3" placeholder="Any dietary requirements, accessibility needs, or special requests..."></textarea>
-          </div>
-        </div>
-
-        <!-- Booking Summary -->
-        <div class="booking-summary">
-          <div class="summary-row">
-            <span><span id="ticketTypeSummary">General Admission</span> × <span id="summaryQty">1</span></span>
-            <span>$<span id="subtotal">25.00</span></span>
-          </div>
-          <div class="summary-row">
-            <span>Service Fee</span>
-            <span>$<span id="serviceFee">2.50</span></span>
-          </div>
-          <div class="summary-row summary-total">
-            <span>Total</span>
-            <span style="color: #319795;">$<span id="total">27.50</span></span>
-          </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div style="text-align: center; margin-top: 30px;">
-          <a href="events.html" class="btn-secondary">← Back to Events</a>
-          <button type="submit" class="btn-primary">Complete Booking</button>
-        </div>
+        <button type="submit" class="book-btn">Book Now</button>
       </form>
     </div>
   </div>
 
-  <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-container">
-      <!-- About Section -->
-      <div class="footer-about">
-        <h3>About Us</h3>
-        <p>We connect you to amazing events – from concerts and gaming tournaments to business meetups and community
-          gatherings. Discover, join, and make memories!</p>
-      </div>
+  <script>
+    const eventData = {
+      'comic-con': {
+        title: 'Comic Con 2025',
+        date: 'March 15-17, 2025',
+        location: 'Convention Center',
+        tickets: [
+          { name: 'General Admission', price: 45, description: 'Access to exhibition hall and basic panels' },
+          { name: 'VIP Pass', price: 125, description: 'All access including exclusive panels and VIP lounge' },
+          { name: 'Weekend Pass', price: 99, description: 'Full weekend access to all general activities' }
+        ]
+      },
+      'developer-conference': {
+        title: 'Developer Conference',
+        date: 'April 22-23, 2025',
+        location: 'Tech Hub Auditorium',
+        tickets: [
+          { name: 'Standard Ticket', price: 199, description: 'Access to all talks and networking sessions' },
+          { name: 'Premium Pass', price: 299, description: 'Standard access plus workshops and premium meals' },
+          { name: 'Student Discount', price: 99, description: 'Special pricing for students with valid ID' }
+        ]
+      },
+      'anyma-concert': {
+        title: 'Anyma Concert',
+        date: 'May 10, 2025',
+        location: 'Music Arena',
+        tickets: [
+          { name: 'General Admission', price: 75, description: 'Standing area with great sound' },
+          { name: 'VIP Experience', price: 150, description: 'Premium viewing area with drinks' },
+          { name: 'Meet & Greet', price: 250, description: 'VIP experience plus meet and greet' }
+        ]
+      },
+      'adoption-day': {
+        title: 'Pet Adoption Day',
+        date: 'June 5, 2025',
+        location: 'City Park',
+        tickets: [
+          { name: 'Entry Fee', price: 10, description: 'Entry to adoption fair with refreshments' },
+          { name: 'Family Pass', price: 25, description: 'Entry for up to 4 family members plus activity pack' }
+        ]
+      },
+      'art-exhibition': {
+        title: 'Contemporary Art Exhibition',
+        date: 'July 12-25, 2025',
+        location: 'Modern Art Gallery',
+        tickets: [
+          { name: 'Regular Entry', price: 20, description: 'Self-guided tour of all exhibition areas' },
+          { name: 'Guided Tour', price: 35, description: 'Expert-led tour with detailed insights' },
+          { name: 'Opening Night', price: 65, description: 'Exclusive opening night with artist meet & greets' }
+        ]
+      },
+      'gaming-tournament': {
+        title: 'Gaming Tournament',
+        date: 'August 18-20, 2025',
+        location: 'Gaming Center',
+        tickets: [
+          { name: 'Spectator Pass', price: 25, description: 'Watch all tournaments with food court access' },
+          { name: 'Player Registration', price: 50, description: 'Compete in tournaments with spectator access' },
+          { name: 'Premium Package', price: 85, description: 'Player registration plus merchandise and priority seating' }
+        ]
+      }
+    };
 
-      <!-- Social Media Section -->
-      <div class="footer-social">
-        <h3>Follow Us</h3>
-        <div class="social-icons">
-          <a href="#" aria-label="Facebook" class="social-icon facebook">F</a>
-          <a href="#" aria-label="Instagram" class="social-icon instagram">I</a>
-        </div>
-      </div>
-    </div>
+    let quantities = {};
 
-    <div class="footer-bottom">
-      <p>&copy; 2025 Konekté. All rights reserved.</p>
-    </div>
-  </footer>
+    function getEventFromURL() {
+      const params = new URLSearchParams(window.location.search);
+      const eventParam = params.get('event');
+      console.log('Event parameter from URL:', eventParam); // Debug line
+      return eventParam || 'comic-con';
+    }
 
-  <!-- external js -->
+    function initializePage() {
+      const eventKey = getEventFromURL();
+      console.log('Loading event:', eventKey); // Debug line
+      const event = eventData[eventKey];
+      
+      if (!event) {
+        document.getElementById('eventTitle').textContent = 'Event Not Found';
+        console.log('Event not found for key:', eventKey);
+        return;
+      }
+
+      document.getElementById('eventTitle').textContent = event.title;
+      document.getElementById('eventMeta').textContent = `${event.date} • ${event.location}`;
+      document.title = `Book ${event.title} - Konekté`;
+
+      createTicketOptions(event.tickets);
+    }
+
+    function createTicketOptions(tickets) {
+      const container = document.getElementById('ticketOptions');
+      container.innerHTML = '';
+
+      tickets.forEach((ticket, index) => {
+        const ticketDiv = document.createElement('div');
+        ticketDiv.className = 'ticket-option';
+        ticketDiv.dataset.ticketIndex = index;
+        ticketDiv.dataset.price = ticket.price;
+        
+        ticketDiv.innerHTML = `
+          <div class="ticket-header">
+            <div class="ticket-name">${ticket.name}</div>
+            <div class="ticket-price">$${ticket.price}</div>
+          </div>
+          <div class="ticket-description">${ticket.description}</div>
+          <div class="quantity-controls">
+            <div class="qty-btn" onclick="changeQuantity(${index}, -1)">-</div>
+            <div class="qty-display" id="qty-${index}">0</div>
+            <div class="qty-btn" onclick="changeQuantity(${index}, 1)">+</div>
+          </div>
+        `;
+
+        container.appendChild(ticketDiv);
+      });
+    }
+
+    function changeQuantity(ticketIndex, change) {
+      if (!quantities[ticketIndex]) quantities[ticketIndex] = 0;
+      
+      quantities[ticketIndex] = Math.max(0, quantities[ticketIndex] + change);
+      document.getElementById(`qty-${ticketIndex}`).textContent = quantities[ticketIndex];
+      
+      const ticketOption = document.querySelector(`[data-ticket-index="${ticketIndex}"]`);
+      if (quantities[ticketIndex] > 0) {
+        ticketOption.classList.add('selected');
+      } else {
+        ticketOption.classList.remove('selected');
+      }
+
+      calculateTotal();
+    }
+
+    function calculateTotal() {
+      let subtotal = 0;
+      
+      Object.keys(quantities).forEach(ticketIndex => {
+        const quantity = quantities[ticketIndex];
+        const price = parseFloat(document.querySelector(`[data-ticket-index="${ticketIndex}"]`).dataset.price);
+        subtotal += quantity * price;
+      });
+
+      const serviceFee = subtotal * 0.1;
+      const total = subtotal + serviceFee;
+
+      document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+      document.getElementById('serviceFee').textContent = `$${serviceFee.toFixed(2)}`;
+      document.getElementById('totalAmount').textContent = `$${total.toFixed(2)}`;
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+      
+      const hasTickets = Object.values(quantities).some(qty => qty > 0);
+      if (!hasTickets) {
+        alert('Please select at least one ticket.');
+        return;
+      }
+
+      const bookBtn = document.querySelector('.book-btn');
+      bookBtn.textContent = 'Processing...';
+      bookBtn.disabled = true;
+
+      setTimeout(() => {
+        alert(`Booking confirmed! Details sent to ${document.getElementById('email').value}`);
+        window.location.href = 'events.html';
+      }, 1500);
+    });
+
+    function toggleMobileMenu() {
+      const mobileNav = document.getElementById('mobileNav');
+      mobileNav.classList.toggle('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', initializePage);
+  </script>
   <script src="./src/js/script.js"></script>
-  <!-- bootstrap -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
 </body>
-
 </html>

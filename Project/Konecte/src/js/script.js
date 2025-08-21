@@ -1,21 +1,21 @@
 //hamburger menu
 function toggleMobileMenu() {
-    const hamburger = document.querySelector('.hamburger');
-    const mobileNav = document.getElementById('mobileNav');
+  const hamburger = document.querySelector('.hamburger');
+  const mobileNav = document.getElementById('mobileNav');
 
-    hamburger.classList.toggle('active');
-    mobileNav.classList.toggle('active');
+  hamburger.classList.toggle('active');
+  mobileNav.classList.toggle('active');
 }
 
 // Close mobile menu when clicking on a link
 document.querySelectorAll('.mobile-nav a').forEach(link => {
-    link.addEventListener('click', () => {
-        const hamburger = document.querySelector('.hamburger');
-        const mobileNav = document.getElementById('mobileNav');
+  link.addEventListener('click', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const mobileNav = document.getElementById('mobileNav');
 
-        hamburger.classList.remove('active');
-        mobileNav.classList.remove('active');
-    });
+    hamburger.classList.remove('active');
+    mobileNav.classList.remove('active');
+  });
 });
 
 //  hero section
@@ -23,60 +23,60 @@ let currentSlideIndex = 0;
 let autoSlideInterval = null;
 
 function updateCarousel() {
-    const container = document.getElementById('carouselContainer');
-    const currentSlideSpan = document.getElementById('currentSlide');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.getElementById('prevBtn');
-    const nextBtn = document.getElementById('nextBtn');
+  const container = document.getElementById('carouselContainer');
+  const currentSlideSpan = document.getElementById('currentSlide');
+  const dots = document.querySelectorAll('.dot');
+  const prevBtn = document.getElementById('prevBtn');
+  const nextBtn = document.getElementById('nextBtn');
 
-    const totalItems = container.children.length;
-    const gap = parseInt(getComputedStyle(container).gap) || 0;
+  const totalItems = container.children.length;
+  const gap = parseInt(getComputedStyle(container).gap) || 0;
 
-    // Compute total moveX by summing widths of previous cards
-    let moveX = 0;
-    for (let i = 0; i < currentSlideIndex; i++) {
-        moveX += container.children[i].getBoundingClientRect().width + gap;
-    }
+  // Compute total moveX by summing widths of previous cards
+  let moveX = 0;
+  for (let i = 0; i < currentSlideIndex; i++) {
+    moveX += container.children[i].getBoundingClientRect().width + gap;
+  }
 
-    container.style.transform = `translateX(-${moveX}px)`;
+  container.style.transform = `translateX(-${moveX}px)`;
 
-    currentSlideSpan.textContent = currentSlideIndex + 1;
-    document.getElementById('totalSlides').textContent = totalItems;
+  currentSlideSpan.textContent = currentSlideIndex + 1;
+  document.getElementById('totalSlides').textContent = totalItems;
 
-    dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlideIndex);
-    });
+  dots.forEach((dot, index) => {
+    dot.classList.toggle('active', index === currentSlideIndex);
+  });
 
-    prevBtn.disabled = currentSlideIndex === 0;
-    nextBtn.disabled = currentSlideIndex === totalItems - 1;
+  prevBtn.disabled = currentSlideIndex === 0;
+  nextBtn.disabled = currentSlideIndex === totalItems - 1;
 }
 
 function changeSlide(direction) {
-    const container = document.getElementById('carouselContainer');
-    const totalItems = container.children.length;
+  const container = document.getElementById('carouselContainer');
+  const totalItems = container.children.length;
 
-    let newIndex = currentSlideIndex + direction;
-    if (newIndex < 0) newIndex = totalItems - 1;
-    if (newIndex >= totalItems) newIndex = 0;
+  let newIndex = currentSlideIndex + direction;
+  if (newIndex < 0) newIndex = totalItems - 1;
+  if (newIndex >= totalItems) newIndex = 0;
 
-    currentSlideIndex = newIndex;
-    updateCarousel();
+  currentSlideIndex = newIndex;
+  updateCarousel();
 }
 
 function goToSlide(index) {
-    currentSlideIndex = index;
-    updateCarousel();
+  currentSlideIndex = index;
+  updateCarousel();
 }
 
 function startAutoSlide() {
-    stopAutoSlide();
-    autoSlideInterval = setInterval(() => {
-        changeSlide(1);
-    }, 5000);
+  stopAutoSlide();
+  autoSlideInterval = setInterval(() => {
+    changeSlide(1);
+  }, 5000);
 }
 
 function stopAutoSlide() {
-    if (autoSlideInterval) clearInterval(autoSlideInterval);
+  if (autoSlideInterval) clearInterval(autoSlideInterval);
 }
 
 window.addEventListener('resize', updateCarousel);
@@ -88,209 +88,178 @@ carousel.addEventListener('mouseleave', startAutoSlide);
 updateCarousel();
 startAutoSlide();
 
-// booking
- // Event data
-    const events = {
-      'comic-con': {
-        title: 'Comic Con 2025',
-        type: 'premium-event',
-        typeText: '$75',
-        date: 'Saturday, Sep 21 • 10:00 AM',
-        location: 'Convention Center, Downtown',
-        description: 'Join thousands of fans for the ultimate comic book and pop culture experience. Meet your favorite artists, discover new comics, and enjoy exclusive panels with celebrity guests.',
-        image: './src/img/comiccon.jpg',
-        price: 75.00,
-        ticketName: 'Convention Pass',
-        features: [
-          { icon: '🎨', text: 'Artist Alley Access' },
-          { icon: '🎤', text: 'Celebrity Panels' },
-          { icon: '📚', text: 'Comic Book Vendors' },
-          { icon: '🎮', text: 'Gaming Zone' }
-        ]
-      },
-      'developer-conference': {
-        title: 'Developer Conference',
-        type: 'paid-event',
-        typeText: '$120',
-        date: 'Friday, Sep 27 • 9:00 AM',
-        location: 'Tech Hub, Silicon Valley',
-        description: 'Connect with industry leaders and learn about the latest in software development, AI, and emerging technologies. Network with professionals and expand your skills.',
-        image: './src/img/devcon.jpg',
-        price: 120.00,
-        ticketName: 'Conference Pass',
-        features: [
-          { icon: '💻', text: 'Tech Workshops' },
-          { icon: '🤖', text: 'AI Demonstrations' },
-          { icon: '🌐', text: 'Networking Sessions' },
-          { icon: '🎯', text: 'Career Fair' }
-        ]
-      },
-      'anyma-concert': {
-        title: 'Anyma Concert',
-        type: 'premium-event',
-        typeText: '$89',
-        date: 'Saturday, Oct 5 • 8:00 PM',
-        location: 'Grand Arena, Music District',
-        description: 'Experience an unforgettable night with Anyma\'s mesmerizing electronic music performance. Cutting-edge visuals and immersive soundscapes await.',
-        image: './src/img/ANYMA.jpg',
-        price: 89.00,
-        ticketName: 'Concert Ticket',
-        features: [
-          { icon: '🎵', text: 'Live Performance' },
-          { icon: '✨', text: 'Visual Effects' },
-          { icon: '🍸', text: 'VIP Bar Access' },
-          { icon: '🎧', text: 'Premium Sound' }
-        ]
-      },
-      'adoption-day': {
-        title: 'Adoption Day',
-        type: 'free-event',
-        typeText: 'Free',
-        date: 'Sunday, Oct 12 • 11:00 AM',
-        location: 'City Park, Pet Pavilion',
-        description: 'Find your new best friend at our pet adoption event! Meet rescued dogs and cats looking for loving homes. All pets are vaccinated and microchipped.',
-        image: './src/img/DogAdopt.jpg',
-        price: 0.00,
-        ticketName: 'Free Entry',
-        features: [
-          { icon: '🐕', text: 'Dogs & Cats' },
-          { icon: '💉', text: 'Vaccinated Pets' },
-          { icon: '❤️', text: 'Loving Homes' },
-          { icon: '🏥', text: 'Health Checked' }
-        ]
-      },
-      'art-exhibition': {
-        title: 'Art Exhibition',
-        type: 'paid-event',
-        typeText: '$15',
-        date: 'Friday, Oct 18 • 6:00 PM',
-        location: 'Modern Art Gallery, Arts District',
-        description: 'Discover contemporary artworks from local and international artists. Opening night includes wine reception and artist meet-and-greet sessions.',
-        image: './src/img/rt.jpg',
-        price: 15.00,
-        ticketName: 'Gallery Pass',
-        features: [
-          { icon: '🎨', text: 'Contemporary Art' },
-          { icon: '🍷', text: 'Wine Reception' },
-          { icon: '👨‍🎨', text: 'Meet Artists' },
-          { icon: '🖼️', text: 'Exclusive Viewing' }
-        ]
-      },
-      'gaming-tournament': {
-        title: 'Gaming Tournament',
-        type: 'paid-event',
-        typeText: '$35',
-        date: 'Saturday, Oct 26 • 1:00 PM',
-        location: 'Esports Arena, Gaming Center',
-        description: 'Compete or spectate in the ultimate gaming tournament featuring popular titles. Prizes, food, and gaming gear giveaways throughout the event.',
-        image: './src/img/gameevent.jpg',
-        price: 35.00,
-        ticketName: 'Tournament Pass',
-        features: [
-          { icon: '🎮', text: 'Multiple Games' },
-          { icon: '🏆', text: 'Cash Prizes' },
-          { icon: '🍕', text: 'Food & Drinks' },
-          { icon: '🎁', text: 'Gaming Gear' }
-        ]
-      }
-    };
+//event booking
+const eventData = {
+  'comic-con': {
+    title: 'Comic Con 2025',
+    date: 'March 15-17, 2025',
+    location: 'Convention Center',
+    tickets: [
+      { name: 'General Admission', price: 45, description: 'Access to exhibition hall and basic panels' },
+      { name: 'VIP Pass', price: 125, description: 'All access including exclusive panels and VIP lounge' },
+      { name: 'Weekend Pass', price: 99, description: 'Full weekend access to all general activities' }
+    ]
+  },
+  'developer-conference': {
+    title: 'Developer Conference',
+    date: 'April 22-23, 2025',
+    location: 'Tech Hub Auditorium',
+    tickets: [
+      { name: 'Standard Ticket', price: 199, description: 'Access to all talks and networking sessions' },
+      { name: 'Premium Pass', price: 299, description: 'Standard access plus workshops and premium meals' },
+      { name: 'Student Discount', price: 99, description: 'Special pricing for students with valid ID' }
+    ]
+  },
+  'anyma-concert': {
+    title: 'Anyma Concert',
+    date: 'May 10, 2025',
+    location: 'Music Arena',
+    tickets: [
+      { name: 'General Admission', price: 75, description: 'Standing area with great sound' },
+      { name: 'VIP Experience', price: 150, description: 'Premium viewing area with drinks' },
+      { name: 'Meet & Greet', price: 250, description: 'VIP experience plus meet and greet' }
+    ]
+  },
+  'adoption-day': {
+    title: 'Pet Adoption Day',
+    date: 'June 5, 2025',
+    location: 'City Park',
+    tickets: [
+      { name: 'Entry Fee', price: 10, description: 'Entry to adoption fair with refreshments' },
+      { name: 'Family Pass', price: 25, description: 'Entry for up to 4 family members plus activity pack' }
+    ]
+  },
+  'art-exhibition': {
+    title: 'Contemporary Art Exhibition',
+    date: 'July 12-25, 2025',
+    location: 'Modern Art Gallery',
+    tickets: [
+      { name: 'Regular Entry', price: 20, description: 'Self-guided tour of all exhibition areas' },
+      { name: 'Guided Tour', price: 35, description: 'Expert-led tour with detailed insights' },
+      { name: 'Opening Night', price: 65, description: 'Exclusive opening night with artist meet & greets' }
+    ]
+  },
+  'gaming-tournament': {
+    title: 'Gaming Tournament',
+    date: 'August 18-20, 2025',
+    location: 'Gaming Center',
+    tickets: [
+      { name: 'Spectator Pass', price: 25, description: 'Watch all tournaments with food court access' },
+      { name: 'Player Registration', price: 50, description: 'Compete in tournaments with spectator access' },
+      { name: 'Premium Package', price: 85, description: 'Player registration plus merchandise and priority seating' }
+    ]
+  }
+};
 
-    let quantity = 1;
-    let currentEvent = null;
-    const serviceFeeRate = 0.10;
+let quantities = {};
 
-    // Get event from URL parameter
-    function getEventFromURL() {
-      const urlParams = new URLSearchParams(window.location.search);
-      return urlParams.get('event') || 'comic-con'; // Default to comic-con
-    }
+function getEventFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const eventParam = params.get('event');
+  console.log('Event parameter from URL:', eventParam); // Debug line
+  return eventParam || 'comic-con';
+}
 
-    // Load event data
-    function loadEvent() {
-      const eventId = getEventFromURL();
-      currentEvent = events[eventId];
+function initializePage() {
+  const eventKey = getEventFromURL();
+  console.log('Loading event:', eventKey); // Debug line
+  const event = eventData[eventKey];
+  
+  if (!event) {
+    document.getElementById('eventTitle').textContent = 'Event Not Found';
+    console.log('Event not found for key:', eventKey);
+    return;
+  }
 
-      if (!currentEvent) {
-        currentEvent = events['comic-con']; // Fallback
-      }
+  document.getElementById('eventTitle').textContent = event.title;
+  document.getElementById('eventMeta').textContent = `${event.date} • ${event.location}`;
+  document.title = `Book ${event.title} - Konekté`;
 
-      // Update event details
-      document.getElementById('eventTitle').textContent = currentEvent.title;
-      document.getElementById('eventType').textContent = currentEvent.typeText;
-      document.getElementById('eventType').className = `event-type ${currentEvent.type}`;
-      document.getElementById('eventDate').innerHTML = `
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
-          <line x1="16" y1="2" x2="16" y2="6"></line>
-          <line x1="8" y1="2" x2="8" y2="6"></line>
-          <line x1="3" y1="10" x2="21" y2="10"></line>
-        </svg>
-        ${currentEvent.date}
-      `;
-      document.getElementById('eventLocation').textContent = `📍 ${currentEvent.location}`;
-      document.getElementById('eventDescription').textContent = currentEvent.description;
-      document.getElementById('eventImage').src = currentEvent.image;
-      document.getElementById('eventImage').alt = currentEvent.title;
+  createTicketOptions(event.tickets);
+}
 
-      // Update ticket info
-      document.getElementById('ticketName').textContent = currentEvent.ticketName;
-      document.getElementById('ticketPrice').textContent = currentEvent.price.toFixed(2);
-      document.getElementById('ticketTypeSummary').textContent = currentEvent.ticketName;
+function createTicketOptions(tickets) {
+  const container = document.getElementById('ticketOptions');
+  container.innerHTML = '';
 
-      // Load features
-      const featuresContainer = document.getElementById('eventFeatures');
-      featuresContainer.innerHTML = currentEvent.features.map(feature => `
-        <div class="feature-item">
-          <div class="feature-icon">${feature.icon}</div>
-          <div>${feature.text}</div>
-        </div>
-      `).join('');
+  tickets.forEach((ticket, index) => {
+    const ticketDiv = document.createElement('div');
+    ticketDiv.className = 'ticket-option';
+    ticketDiv.dataset.ticketIndex = index;
+    ticketDiv.dataset.price = ticket.price;
+    
+    ticketDiv.innerHTML = `
+      <div class="ticket-header">
+        <div class="ticket-name">${ticket.name}</div>
+        <div class="ticket-price">$${ticket.price}</div>
+      </div>
+      <div class="ticket-description">${ticket.description}</div>
+      <div class="quantity-controls">
+        <div class="qty-btn" onclick="changeQuantity(${index}, -1)">-</div>
+        <div class="qty-display" id="qty-${index}">0</div>
+        <div class="qty-btn" onclick="changeQuantity(${index}, 1)">+</div>
+      </div>
+    `;
 
-      // Update pricing
-      updateDisplay();
-    }
+    container.appendChild(ticketDiv);
+  });
+}
 
-    function changeQuantity(delta) {
-      const newQuantity = quantity + delta;
-      if (newQuantity >= 1 && newQuantity <= 10) {
-        quantity = newQuantity;
-        updateDisplay();
-      }
-    }
+function changeQuantity(ticketIndex, change) {
+  if (!quantities[ticketIndex]) quantities[ticketIndex] = 0;
+  
+  quantities[ticketIndex] = Math.max(0, quantities[ticketIndex] + change);
+  document.getElementById(`qty-${ticketIndex}`).textContent = quantities[ticketIndex];
+  
+  const ticketOption = document.querySelector(`[data-ticket-index="${ticketIndex}"]`);
+  if (quantities[ticketIndex] > 0) {
+    ticketOption.classList.add('selected');
+  } else {
+    ticketOption.classList.remove('selected');
+  }
 
-    function updateDisplay() {
-      if (!currentEvent) return;
+  calculateTotal();
+}
 
-      document.getElementById('quantity').textContent = quantity;
-      document.getElementById('summaryQty').textContent = quantity;
-      
-      const subtotal = currentEvent.price * quantity;
-      const serviceFee = subtotal * serviceFeeRate;
-      const total = subtotal + serviceFee;
-      
-      document.getElementById('subtotal').textContent = subtotal.toFixed(2);
-      document.getElementById('serviceFee').textContent = serviceFee.toFixed(2);
-      document.getElementById('total').textContent = total.toFixed(2);
-    }
+function calculateTotal() {
+  let subtotal = 0;
+  
+  Object.keys(quantities).forEach(ticketIndex => {
+    const quantity = quantities[ticketIndex];
+    const price = parseFloat(document.querySelector(`[data-ticket-index="${ticketIndex}"]`).dataset.price);
+    subtotal += quantity * price;
+  });
 
-    // Form submission
-    document.getElementById('bookingForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      
-      // Show success message
-      document.getElementById('successMessage').style.display = 'block';
-      
-      // Scroll to top to show message
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      
-      // Reset form after a delay
-      setTimeout(() => {
-        this.reset();
-        quantity = 1;
-        updateDisplay();
-        document.getElementById('successMessage').style.display = 'none';
-      }, 3000);
-    });
+  const serviceFee = subtotal * 0.1;
+  const total = subtotal + serviceFee;
 
-    // Initialize on page load
-    document.addEventListener('DOMContentLoaded', loadEvent);
+  document.getElementById('subtotal').textContent = `$${subtotal.toFixed(2)}`;
+  document.getElementById('serviceFee').textContent = `$${serviceFee.toFixed(2)}`;
+  document.getElementById('totalAmount').textContent = `$${total.toFixed(2)}`;
+}
+
+document.getElementById('bookingForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  const hasTickets = Object.values(quantities).some(qty => qty > 0);
+  if (!hasTickets) {
+    alert('Please select at least one ticket.');
+    return;
+  }
+
+  const bookBtn = document.querySelector('.book-btn');
+  bookBtn.textContent = 'Processing...';
+  bookBtn.disabled = true;
+
+  setTimeout(() => {
+    alert(`Booking confirmed! Details sent to ${document.getElementById('email').value}`);
+    window.location.href = 'events.html';
+  }, 1500);
+});
+
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  mobileNav.classList.toggle('active');
+}
+
+document.addEventListener('DOMContentLoaded', initializePage);
