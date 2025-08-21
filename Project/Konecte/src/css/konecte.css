@@ -762,16 +762,17 @@ body {
 
 @media (min-width: 1024px) {
     .hero-card {
-        flex: 0 0 45%;   /* two cards visible */
+        flex: 0 0 45%;
     }
 }
 
 @media (max-width: 768px) {
+
     .hero-content {
         display: flex;
-        flex-direction: column;   /* stack items vertically */
+        flex-direction: column;  
         text-align: center;
-        gap: 2rem;               /* spacing between text and carousel */
+        gap: 2rem;     
     }
 
     .hero-visual {
@@ -798,7 +799,7 @@ body {
     }
 
     .hero-text {
-        padding: 0 1rem;   /* smaller horizontal padding */
+        padding: 0 1rem; 
     }
 }
 
