@@ -1,0 +1,12 @@
+.login {
+    background-color: grey;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
+}
+
+::placeholder {
+    color: #999;
+    opacity: 0.5;
+    padding: 20px auto;
+}
