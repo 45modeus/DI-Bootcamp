@@ -1,0 +1,129 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: blue;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    background: white;
+    border: 12px;
+    box-shadow: 0 10px 30px grey;
+    padding: 40px;
+    text-align: center;
+    max-width: 400px;
+    width: 100%;
+}
+
+h1 {
+    color: whitesmoke;
+    margin-bottom: 10px;
+    font-size: 2rem;
+}
+
+.player {
+    margin-bottom: 30px;
+    font-size: 1.2rem;
+    color: beige;
+    min-height: 30px;
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5px;
+    background: #ddd;
+    border-radius: 10px;
+    padding: 5px;
+    margin: 0 auto 30px;
+    max-width: 300px;
+}
+
+.cell {
+    background: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.cell:hover {
+    background: #f0f0f0;
+    transform: scale(0.95);
+}
+
+.cell.x {
+    color: #e74c3c;
+}
+
+.cell.o {
+    color: #3498db;
+}
+
+.cell:disabled {
+    cursor: not-allowed;
+}
+
+.cell:disabled:hover {
+    background: white;
+    transform: none;
+}
+
+.reset-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1rem;
+    font-weight: 500;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.reset-btn:hover {
+    background: #5a67d8;
+}
+
+.winner {
+    color: #27ae60;
+    font-weight: bold;
+}
+
+.draw {
+    color: #f39c12;
+    font-weight: bold;
+}
+
+@media (max-width: 480px) {
+    .game-container {
+        padding: 25px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .cell {
+        font-size: 1.5rem;
+    }
+
+    .game-board {
+        max-width: 250px;
+    }
+}
