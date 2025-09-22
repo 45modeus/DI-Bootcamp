@@ -88,4 +88,26 @@ carousel.addEventListener('mouseleave', startAutoSlide);
 updateCarousel();
 startAutoSlide();
 
-//event booking
+//log in
+   // Tab switching functionality
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+            document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+            
+            // Update forms
+            document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+            document.getElementById(tab + 'Form').classList.add('active');
+            
+            // Update header text
+            const title = document.querySelector('.auth-title');
+            const subtitle = document.querySelector('.auth-subtitle');
+            
+            if (tab === 'signin') {
+                title.textContent = 'Welcome Back';
+                subtitle.textContent = 'Sign in to your account or create a new one';
+            } else {
+                title.textContent = 'Create Account';
+                subtitle.textContent = 'Join Konekté and start discovering amazing events';
+            }
+        }
