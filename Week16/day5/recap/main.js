@@ -10,5 +10,11 @@ function ogColor() {
 
 function userScroll() {
     changeColor();
-    setTimeout(ogColor, 5000);
+    setTimeout(ogColor, 1000);
+}
+
+//toggle
+
+function swapBgColor() {
+    document.body.classList.toggle('dark');
 }
