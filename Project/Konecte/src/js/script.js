@@ -88,4 +88,105 @@ carousel.addEventListener('mouseleave', startAutoSlide);
 updateCarousel();
 startAutoSlide();
 
-//event booking
+//log in
+// Tab switching functionality
+function switchTab(tab) {
+  // Update tab buttons
+  document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active'));
+  document.querySelector(`[onclick="switchTab('${tab}')"]`).classList.add('active');
+
+  // Update forms
+  document.querySelectorAll('.auth-form').forEach(f => f.classList.remove('active'));
+  document.getElementById(tab + 'Form').classList.add('active');
+
+  // Update header text
+  const title = document.querySelector('.auth-title');
+  const subtitle = document.querySelector('.auth-subtitle');
+
+  if (tab === 'signin') {
+    title.textContent = 'Welcome Back';
+    subtitle.textContent = 'Sign in to your account or create a new one';
+  } else {
+    title.textContent = 'Create Account';
+    subtitle.textContent = 'Join Konekté and start discovering amazing events';
+  }
+}
+
+// Password strength checker
+function checkPasswordStrength(password) {
+  const strengthFill = document.getElementById('strengthFill');
+  const strengthText = document.getElementById('strengthText');
+
+  let strength = 0;
+  let feedback = '';
+
+  if (password.length >= 8) strength++;
+  if (/[a-z]/.test(password)) strength++;
+  if (/[A-Z]/.test(password)) strength++;
+  if (/[0-9]/.test(password)) strength++;
+  if (/[^A-Za-z0-9]/.test(password)) strength++;
+
+  strengthFill.className = 'strength-fill';
+
+  switch (strength) {
+    case 0:
+    case 1:
+      strengthFill.classList.add('weak');
+      feedback = 'Weak password';
+      break;
+    case 2:
+      strengthFill.classList.add('fair');
+      feedback = 'Fair password';
+      break;
+    case 3:
+      strengthFill.classList.add('good');
+      feedback = 'Good password';
+      break;
+    case 4:
+    case 5:
+      strengthFill.classList.add('strong');
+      feedback = 'Strong password';
+      break;
+  }
+
+  strengthText.textContent = feedback;
+}
+
+// Form validation
+document.getElementById('signupForm').addEventListener('submit', function (e) {
+  const password = document.getElementById('signup-password').value;
+  const confirmPassword = document.getElementById('signup-confirm').value;
+
+  if (password !== confirmPassword) {
+    e.preventDefault();
+    showError('Passwords do not match!');
+    return false;
+  }
+
+  if (password.length < 8) {
+    e.preventDefault();
+    showError('Password must be at least 8 characters long!');
+    return false;
+  }
+});
+
+// Show messages
+function showSuccess(message) {
+  const successMsg = document.getElementById('successMessage');
+  successMsg.textContent = message;
+  successMsg.style.display = 'block';
+  document.getElementById('errorMessage').style.display = 'none';
+}
+
+function showError(message) {
+  const errorMsg = document.getElementById('errorMessage');
+  errorMsg.textContent = message;
+  errorMsg.style.display = 'block';
+  document.getElementById('successMessage').style.display = 'none';
+}
+
+// Mobile menu toggle
+function toggleMobileMenu() {
+  const mobileNav = document.getElementById('mobileNav');
+  mobileNav.style.display = mobileNav.style.display === 'flex' ? 'none' : 'flex';
+}
