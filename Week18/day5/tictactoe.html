@@ -10,7 +10,13 @@
 <body>
     <div class="game-container">
         <h1>Tic Tac Toe Game</h1>
-        <div class="player" id="player">Player X's turn</div>
+        <div class="difficulty" id="difficultySelector">
+            <p>Choose difficulty:</p>
+            <button class="diff-btn" data-level="easy">Easy</button>
+            <button class="diff-btn" data-level="hard">Hard</button>
+        </div>
+        
+        <div class="player" id="player">Your turn (X)</div>
 
         <div class="game-board" id="gameBoard">
             <button class="cell" data-index="0"></button>
