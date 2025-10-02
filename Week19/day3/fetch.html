@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        let mypromise = fetch("https://api.artic.edu/api/v1/artworks") // returns a promise
+        mypromise.then(function(data) {
+            document.getElementById("artworks").innerHTML = "<h2>We will display the artworks here</h2>"
+        })
+        mypromise.catch(function(data) {
+            console.log[data]
+            document.getElementById("artworks").innerHTML = "<h2 style='background-color: red;'>The link is not good</h2>"
+            // alert("the link is not working")
+        })
+    </script>
+</head>
+<body>
+    <h1>Welcome to Artworks display</h1>
+    <div id="artworks">
+        Loading...
+    </div>
+</body>
+</html>
