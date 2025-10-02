@@ -4,6 +4,7 @@ const app = express();
 
 app.use(express.json());
 
+//create
 app.post("/api/posts", (req, res) => {
   const { title, content } = req.body;
 
@@ -22,6 +23,7 @@ app.post("/api/posts", (req, res) => {
   res.status(201).json(newPost);
 });
 
+//read
 app.get("/api/posts", (req, res) => {
   res.json(posts);
 });
@@ -36,6 +38,7 @@ app.get("/api/posts/:postID", (req, res) => {
   }
 });
 
+//update
 app.put("/api/posts/:postID", (req, res) => {
     const postID = Number(req.params.postID);
   const { title, content } = req.body;
@@ -55,11 +58,13 @@ app.put("/api/posts/:postID", (req, res) => {
   }
 });
 
+//delete
+
 app.delete("/api/posts/:postID", (req, res) => {
    const postID = Number(req.params.postID);
    const index = posts.findIndex(post => post.id === postID);
 
-   if(!index !== -1) {
+   if(index !== -1) {
     posts.splice(index, 1);
     res.status(200).json({ message: "Post deleted" });
    } else {
