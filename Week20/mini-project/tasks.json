@@ -1,18 +1,1 @@
-[
-    {
-        "id": 2,
-        "title": "Clean the house"
-    },
-    {
-        "id": 3,
-        "title": "Buy bread"
-    },
-    {
-        "id": 4,
-        "title": "Go shopping"
-    },
-    {
-        "id": 5,
-        "title": "new task"
-    }
-]
+[{"id":2,"title":"Clean the house"},{"id":3,"title":"Buy bread"},{"id":4,"title":"Go shopping"},{"id":5,"title":"modified another new task"},{"id":5,"title":"another new task"}]
