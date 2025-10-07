@@ -10,7 +10,7 @@ router.get('/', (req, res) => {
 
     try {
         const data = fs.readFileSync(dataFile, 'utf-8');
-        const tasks = JSON.parse(data);``
+        const tasks = JSON.parse(data);
         res.json(tasks);
     } catch (err) {
         res.status(500).json({ error: 'Failed to read tasks file' });
