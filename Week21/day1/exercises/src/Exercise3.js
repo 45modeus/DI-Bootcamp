@@ -18,25 +18,29 @@ class Exercise extends Component {
                 </h1>
 
                 <p className="para">This is a paragraph in my Exercise Component.</p>
-
+                <br></br>
                 <a href="https://react.dev" target="_blank" rel="noreferrer">
-                Visit React Documentation</a>
+                    Visit React Documentation</a>
 
+                <br></br>
+                <br></br>
                 <form>
                     <label>
-                        Name: 
+                        Name:
                         <input type="text" name="name" />
                     </label>
                     <button type="submit">Submit</button>
                 </form>
 
-                <img 
-                src="https://via.placeholder.com/150"
-                alt="Example"
-                width="150"
-                height="150"
+                <p>This is an image</p>
+                <img
+                    src="https://upload.wikimedia.org/wikipedia/commons/a/a7/React-icon.svg"
+                    alt="React Logo"
+                    width="300"
                 />
-
+                <br></br>
+                <br></br>
+                <p>This is a list</p>
                 <ul>
                     <li>First Item</li>
                     <li>Second Item</li>
