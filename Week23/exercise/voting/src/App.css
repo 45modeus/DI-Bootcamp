@@ -1,0 +1,15 @@
+.App {
+  text-align: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.language {
+  margin: 15px;
+  font-size: 20px;
+}
+
+button {
+  margin-left: 15px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
