@@ -1,0 +1,18 @@
+button {
+  padding: 8px 15px;
+  background-color: #2980b9;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #3498db;
+}
+
+input, select {
+  padding: 5px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
