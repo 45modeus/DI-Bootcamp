@@ -1,67 +1,44 @@
 import React from "react";
+import { Carousel } from "react-responsive-carousel";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+
+//images
 import img1 from "./hongkong.jpg";
 import img2 from "./japan.webp";
 import img3 from "./lasvegas.webp";
 import img4 from "./macao.webp";
 
-const Carousel = () => {
+const ReactCarousel = () => {
     return (
         <div className="container mt-4">
-            <div id="carouselExample" className="carousel slide" data-bs-ride="carousel">
-                <div className="carousel-inner">
-                    <div className="carousel-item active">
-                        <img
-                            src={img1}
-                            className="d-block w-100"
-                            alt="Slide 1"
-                        />
-                    </div>
-                    <div className="carousel-item">
-                        <img
-                            src={img2}
-                            className="d-block w-100"
-                            alt="Slide 2"
-                        />
-                    </div>
-                    <div className="carousel-item">
-                        <img
-                            src={img3}
-                            className="d-block w-100"
-                            alt="Slide 3"
-                        />
-                    </div>
-                    <div className="carousel-item">
-                        <img
-                            src={img4}
-                            className="d-block w-100"
-                            alt="Slide 4"
-                        />
-                    </div>
+            <Carousel 
+                showArrows={true}
+                autoPlay={true}
+                infiniteLoop={true}
+                showThumbs={false}
+                showStatus={false}
+                interval={3000}
+                stopOnHover={true}
+            >
+                <div>
+                    <img src={img1} alt="Hong Kong" />
+                    <p className="legend">Hong Kong</p>
                 </div>
-
-                {/* Carousel control */}
-                <button
-                    className="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselExample"
-                    data-bs-slide="prev"
-                >
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Previous</span>
-                </button>
-
-                <button
-                    className="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselExample"
-                    data-bs-slide="next"
-                >
-                    <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span className="visually-hidden">Next</span>
-                </button>
-            </div>
+                <div>
+                    <img src={img2} alt="Japan" />
+                    <p className="legend">Japan</p>
+                </div>
+                <div>
+                    <img src={img3} alt="Las Vegas" />
+                    <p className="legend">Las Vegas</p>
+                </div>
+                <div>
+                    <img src={img4} alt="Macao" />
+                    <p className="legend">Macao</p>
+                </div>
+            </Carousel>
         </div>
     );
 }
 
-export default Carousel;
+export default ReactCarousel;
