@@ -9,10 +9,10 @@ router.use(authenticateToken);
 router.get("/", async (req, res) => {
     try {
         const tasks = await getTasksByUser(req.user.id);
-        res.json(tasks);
+        res.json(tasks || []); // <-- always an array
     } catch (err) {
         console.error(err);
-        res.status(500).json({ message: "Server error" });
+        res.json([]); // fallback to empty array
     }
 });
 
