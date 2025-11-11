@@ -19,7 +19,16 @@ router.post("/signup", async (req, res) => {
             return res.status(400).json({ message: "Username already exists" });
 
         const newUser = await createUser(username, password);
-        res.status(201).json({ message: "User Created", user: newUser });
+
+        // Generate token immediately
+        const token = jwt.sign(
+            { id: newUser.id, username: newUser.username },
+            JWT_SECRET,
+            { expiresIn: "2h" }
+        );
+
+        // Return token and username
+        res.status(201).json({ message: "User Created", token, username: newUser.username });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Server error" });

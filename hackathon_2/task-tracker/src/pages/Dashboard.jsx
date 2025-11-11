@@ -4,25 +4,34 @@ import { useNavigate } from "react-router-dom";
 function Dashboard() {
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState("");
-    const token = localStorage.getItem("token");
+    const [username, setUsername] = useState("");
     const navigate = useNavigate();
-    const username = localStorage.getItem("username");
 
+    // Always read the latest token & username
+    const token = localStorage.getItem("token");
+
+    useEffect(() => {
+        const storedUsername = localStorage.getItem("username");
+        if (!token) {
+            navigate("/login");
+            return;
+        }
+        setUsername(storedUsername || "User");
+        fetchTasks();
+    }, [token, navigate]);
 
     const fetchTasks = async () => {
+        const token = localStorage.getItem("token"); // read latest token
+        if (!token) {
+            navigate("/login");
+            return;
+        }
         try {
             const res = await fetch("http://localhost:5000/api/tasks", {
                 headers: { Authorization: `Bearer ${token}` },
             });
             const data = await res.json();
-
-            // Make sure it's an array before setting state
-            if (Array.isArray(data)) {
-                setTasks(data);
-            } else {
-                setTasks([]); // fallback to empty array
-                console.error("Tasks fetch returned:", data);
-            }
+            setTasks(Array.isArray(data) ? data : []);
         } catch (err) {
             console.error("Error fetching tasks:", err);
             setTasks([]);
@@ -34,46 +43,70 @@ function Dashboard() {
         e.preventDefault();
         if (!newTask) return;
 
-        await fetch("http://localhost:5000/api/tasks", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({ title: newTask }),
-        });
-        setNewTask("");
-        fetchTasks();
+        try {
+            const res = await fetch("http://localhost:5000/api/tasks", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ title: newTask }),
+            });
+
+            if (!res.ok) {
+                const errData = await res.json();
+                throw new Error(errData.message || "Failed to add task");
+            }
+
+            const createdTask = await res.json();
+            // Add the new task to the list immediately
+            setTasks(prev => [...prev, createdTask]);
+            setNewTask("");
+        } catch (err) {
+            console.error("Failed to add task:", err);
+        }
     };
 
     const deleteTask = async (id) => {
-        await fetch(`http://localhost:5000/api/tasks/${id}`, {
-            method: "DELETE",
-            headers: { Authorization: `Bearer ${token}` },
-        });
-        fetchTasks();
+        try {
+            await fetch(`http://localhost:5000/api/tasks/${id}`, {
+                method: "DELETE",
+                headers: { Authorization: `Bearer ${token}` },
+            });
+            setTasks(prev => prev.filter(task => task.id !== id));
+        } catch (err) {
+            console.error("Failed to delete task:", err);
+        }
     };
 
     const toggleComplete = async (id, completed, title) => {
-        await fetch(`http://localhost:5000/api/tasks/${id}`, {
-            method: "PUT",
-            headers: {
-                "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
-            },
-            body: JSON.stringify({ title, completed: !completed }),
-        });
-        fetchTasks();
+        try {
+            const res = await fetch(`http://localhost:5000/api/tasks/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+                body: JSON.stringify({ title, completed: !completed }),
+            });
+            if (!res.ok) throw new Error("Failed to update task");
+
+            // Update state locally
+            setTasks(prev =>
+                prev.map(task =>
+                    task.id === id ? { ...task, completed: !completed } : task
+                )
+            );
+        } catch (err) {
+            console.error(err);
+        }
     };
 
     const logout = () => {
         localStorage.removeItem("token");
+        localStorage.removeItem("username");
         navigate("/login");
     };
-
-    useEffect(() => {
-        fetchTasks();
-    }, []);
 
     return (
         <div
@@ -87,9 +120,7 @@ function Dashboard() {
             }}
         >
             <div style={{ marginBottom: "1rem" }}>
-                <h2 style={{ color: "#343a40" }}>
-                    Hello, {username || "User"}! 👋
-                </h2>
+                <h2 style={{ color: "#343a40" }}>Hello, {username} 👋</h2>
                 <h3 style={{ color: "#495057" }}>Here are your tasks:</h3>
             </div>
 
@@ -137,7 +168,7 @@ function Dashboard() {
             </form>
 
             <ul style={{ listStyle: "none", padding: 0 }}>
-                {Array.isArray(tasks) && tasks.length > 0 ? (
+                {tasks.length > 0 ? (
                     tasks.map((task) => (
                         <li
                             key={task.id}
@@ -180,7 +211,6 @@ function Dashboard() {
             </ul>
         </div>
     );
-
 }
 
 export default Dashboard;
