@@ -4,10 +4,10 @@ import bcrypt from "bcrypt";
 export async function createUser(username, password) {
     const password_hash = await bcrypt.hash(password, 10);
     const result = await pool.query(
-    "INSERT INTO users (username, password_hash) VALUES ($1, $2) RETURNING id, username",
-    [username, password_hash]
-  );
-  return result.rows[0];
+        "INSERT INTO users (username, password_hash) VALUES ($1, $2) RETURNING id, username",
+        [username, password_hash]
+    );
+    return result.rows[0];
 }
 
 export async function findUserByUsername(username) {
@@ -16,4 +16,8 @@ export async function findUserByUsername(username) {
         [username]
     );
     return result.rows[0];
+}
+
+export async function updateUserPassword(userId, hashedPassword) {
+    await pool.query("UPDATE users SET password_hash = $1 WHERE id = $2", [hashedPassword, userId]);
 }

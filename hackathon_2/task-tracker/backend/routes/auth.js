@@ -1,8 +1,7 @@
-// backend/routes/auth.js
 import express from "express";
 import jwt from "jsonwebtoken";
 import bcrypt from "bcrypt";
-import { createUser, findUserByUsername } from "../models/userModel.js";
+import { findUserByUsername, updateUserPassword, createUser } from "../models/userModel.js";
 
 const router = express.Router();
 const JWT_SECRET = process.env.JWT_SECRET || "secretkey";
@@ -41,6 +40,26 @@ router.post("/login", async (req, res) => {
         const token = jwt.sign({ id: user.id, username: user.username }, JWT_SECRET, { expiresIn: "2h" });
 
         res.json({ message: "Login successful", token });
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ message: "Server error" });
+    }
+});
+
+// Forgot password route
+router.post("/forgot-password", async (req, res) => {
+    try {
+        const { username, newPassword } = req.body;
+        if (!username || !newPassword)
+            return res.status(400).json({ message: "Username and new password are required" });
+
+        const user = await findUserByUsername(username);
+        if (!user) return res.status(400).json({ message: "User not found" });
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+        await updateUserPassword(user.id, hashedPassword);
+
+        res.json({ message: "Password reset successfully!" });
     } catch (err) {
         console.error(err);
         res.status(500).json({ message: "Server error" });

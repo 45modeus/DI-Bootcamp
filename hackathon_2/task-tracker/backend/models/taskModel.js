@@ -31,3 +31,11 @@ export async function updateTask(id, title, completed) {
 export async function deleteTask(id) {
   await pool.query("DELETE FROM tasks WHERE id = $1", [id]);
 }
+
+export async function getTaskById(id) {
+    const result = await pool.query(
+        "SELECT * FROM tasks WHERE id = $1",
+        [id]
+    );
+    return result.rows[0];
+}
